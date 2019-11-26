@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Register form</h2>
+  {% if error %}
+  <h4>{{ error }}</h4>
+  {% endif %}
+  <form action="{% url 'signup' %}" method="POST">
+      
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter email" name="username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+    </div>
+    <div class="form-group">
+            <label for="passwordagain">Confirm Password:</label>
+            <input type="text" class="form-control" id="passwordagain" placeholder="Enter password" name="passwordagain">
+          </div>
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="" onclick="myFunction()"> Show Password
+      </label>
+    </div>
+    <a class="btn-success"  href="{% url 'login' %}">Try to LogIn ?</a><br>
+    <button type="submit" class="btn btn-primary">SignUp</button>
+  </form>
+</div>
+
+
+<script>
+        function myFunction() {
+          var x = $('#password').val();
+          console.log(x);
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+        </script>
+
+
+</body>
+</html>
